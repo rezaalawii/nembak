@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pler kuda</title>
+    <style>
+        body {
+            background-color: #ffe4e1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 250px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #ff1493;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 0 10px;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Pop-up styling */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 3px solid #ff69b4;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .popup img {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .popup h2 {
+            color: #ff1493;
+        }
+
+        .popup button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>mau ga jadi pacar kuuuh 🤍</h1>
+    <div class="image-container">
+        <img src="sonic.jpeg" alt="">
+    </div>
+    <div class="button-container">
+        <button class="btn" id="yes-btn">mau</button>
+        <button class="btn" id="no-btn">gamau</button>
+    </div>
+
+    <!-- Pop-up and Overlay -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <img src="nigga.jpeg" alt="Heart">
+        <h2>loveee uuu</h2>
+        <p>mie nyemek mie kuah muah muah</p>
+        <button id="close-popup">Tutup</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init("GfydGo1YkIE-irJSY"); // Replace with your EmailJS user ID
+
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const closePopupBtn = document.getElementById('close-popup');
+
+        yesBtn.addEventListener('click', () => {
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+
+            emailjs.send("service_vvo2wok", "template_362mp8l", {
+                message: "User clicked 'mau' button!",
+                user_email: "rezaalawi25@email.com" 
+            }).then(() => {
+                console.log('Email sent successfully');
+            }).catch((error) => {
+                console.error('Email sending failed', error);
+            });
+        });
+
+        closePopupBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        noBtn.addEventListener('mouseenter', moveButton);
+        noBtn.addEventListener('touchstart', moveButton);
+    </script>
+</body>
+</html>
